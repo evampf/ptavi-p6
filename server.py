@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+"""Clase para un servidor de eco en UDP simple."""
+
 
 import socketserver
 import sys
@@ -8,6 +10,7 @@ import os
 
 
 class EchoHandler (socketserver.DatagramRequestHandler):
+    """Echo server class."""
 
     SERVER = (sys.argv[1])
     PORT = int(sys.argv[2])
@@ -19,7 +22,7 @@ class EchoHandler (socketserver.DatagramRequestHandler):
             sys.exit("Usage: python server.py IP port audio_file")
 
     def handle(self):
-
+        """Escribe dirección y puerto del cliente."""
         while 1:
             text = self.rfile.read()
             line = self.rfile.read()
