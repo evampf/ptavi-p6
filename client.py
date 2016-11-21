@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""
-Programa cliente que abre un socket a un servidor
-"""
 
 import socket
 import sys
@@ -15,7 +12,6 @@ INF = sys.argv[2]
 INF1 = INF.split("@")
 INF2 = INF1[1].split(":")
 
-
 PORT = int(INF2[1])
 SERVER = (INF2[0])
 USER = (INF1[0])
@@ -25,7 +21,6 @@ REQUEST = sys.argv[1]
 
 if len(sys.argv) != 3:
     sys.exit("Usage: python client.py method receiver@IP:SIPport")
-
 
 # Contenido que vamos a enviar
 LINE_SIP = " sip:" + USER + "@" + SERVER + " SIP/2.0\r\n\r\n"
@@ -49,7 +44,6 @@ Recibido180 = ("SIP/2.0 180 Ring")
 Recibido200 = ("SIP/2.0 200 OK")
 Recibido = [Recibido100, Recibido180, Recibido200]
 
-
 if RecibidoInvite == Recibido:
     LINE_ACK = "ACK" + LINE_SIP
     print("Enviando ACK...", LINE_ACK)
@@ -58,7 +52,6 @@ if RecibidoInvite == Recibido:
 
 print('Recibido -- ', Recibido)
 print("Terminando socket...")
-
 
 # Cerramos todo
 my_socket.close()
