@@ -1,33 +1,26 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""
-Clase (y programa principal) para un servidor de eco en UDP simple
-"""
+
 
 import socketserver
 import sys
+import os
 
 
-class EchoHandler(socketserver.DatagramRequestHandler):
-    """
-    Echo server class
-    """
+class EchoHandler (socketserver.DatagramRequestHandler):
 
     SERVER = (sys.argv[1])
     PORT = int(sys.argv[2])
     SONG = (sys.argv[3])
     MP3 = sys.argv[3][-4:]
 
-
     if len(sys.argv) != 4:
         if sys.argv[3][-4:] != ".mp3":
             sys.exit("Usage: python server.py IP port audio_file")
 
-
     def handle(self):
 
         while 1:
-            # Leyendo línea a línea lo que nos envía el cliente       
             text = self.rfile.read()
             line = self.rfile.read()
             print("El cliente nos manda " + text.decode('utf-8'))
@@ -36,7 +29,6 @@ class EchoHandler(socketserver.DatagramRequestHandler):
             REQUEST = Words_LINES[0]
             print("La peticion es: ", REQUEST)
             print("Listening...")
-
 
             if REQUEST == 'INVITE':
                 mensaje = b"SIP/2.0 100 Trying\r\n\r\n"
