@@ -24,7 +24,6 @@ class EchoHandler (socketserver.DatagramRequestHandler):
     def handle(self):
         """Escribe dirección y puerto del cliente."""
         while 1:
-            text = self.rfile.read()
             line = self.rfile.read()
             print("El cliente nos manda " + text.decode('utf-8'))
             LINE = text.decode('utf-8')
